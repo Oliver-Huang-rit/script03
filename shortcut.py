@@ -105,6 +105,7 @@ def run_report():
     for i in range(0, len(currents)):
         if (currents[i] != None):
             print(currents[i])
+    time.sleep(2)
 
 
 def main():
@@ -122,10 +123,9 @@ def main():
             run_report()
         else:
             print("Unrecognized input, please try again...\n")
-        print("\n\n\n\n")
+        clear_terminal()
         print_manu()
         print("Current path: ", os.getcwd(),"\n")
-        clear_terminal()
         selected = input("Plrase enter a \033[32mnumber (1, 2, or 3)\033[0m or \033[31m\"quit\"\033[0m to quit the program: ")
 
 
