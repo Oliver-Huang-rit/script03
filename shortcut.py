@@ -93,7 +93,7 @@ def run_report():
             # the following block of code create the row needed
             # to be printed and put it into the currents list
             # and incremet the index of the currents list by 1
-            for n in range(0, 20 - len(current)):
+            for n in range(0, 30 - len(current)):
                 current += " "
             path = (str)(check_output(["readlink", files[i]]))
             path = path.split("b'")
