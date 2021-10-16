@@ -74,7 +74,7 @@ def run_report():
     files = files[0]
     files = files.split("\\n")
 
-    currents = [len(files)]
+    currents = [None] * len(files)
     index = 0
 
     for i in range(0, len(files) - 1):
