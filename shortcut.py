@@ -64,11 +64,6 @@ def delete_link():
 
 def run_report():
     os.chdir(os.path.expanduser('~'))
-    title = "Symbolic Link"
-    for i in range (0, 13):
-        title += " "
-    title += "Target Path"
-    print("\033[33", title, "\033[0m\n")
     
     files = (str)(check_output("ls"))
     files = files.split("b'")
@@ -78,6 +73,9 @@ def run_report():
     files = files.splitlines()
     files = files[0]
     files = files.split("\\n")
+
+    currents = [len(files)]
+    index = 0
 
     for i in range(0, len(files) - 1):
         re = subprocess.call(["readlink", files[i]])
@@ -95,7 +93,19 @@ def run_report():
             path = path.split("\\n")
             path = path[0]
             current += path
-            print(current, "\n")
+            currents[index] = current
+            index += 1
+    
+    clear_terminal()
+    title = "Symbolic Link"
+    for i in range (0, 13):
+        title += " "
+    title += "Target Path"
+    print("\033[33", title, "\033[0m\n")
+    for i in range(0, len(currents)):
+        if (currents[i] != None):
+            print(currents[i])
+
 
 def main():
     os.chdir(os.path.expanduser('~'))
@@ -112,11 +122,11 @@ def main():
             run_report()
         else:
             print("Unrecognized input, please try again...\n")
-        time.sleep(1)
-        clear_terminal()
+        print("\n\n\n\n\n")
         print_manu()
         print("Current path: ", os.getcwd(),"\n")
-        selected = input("Plrase enter a \033[32mnumber (1, 2, or 3)\033[0m or \033[31m\"Q\q\"\033[0m to quit the program: ")
+        clear_terminal()
+        selected = input("Plrase enter a \033[32mnumber (1, 2, or 3)\033[0m or \033[31m\"quit\"\033[0m to quit the program: ")
 
 
 main()
