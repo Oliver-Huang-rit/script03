@@ -82,8 +82,21 @@ def run_report():
 
     for i in range(0, len(files) - 1):
         re = subprocess.call(["readlink", files[i]])
-
-
+        if re == 0:
+            current = files[i]
+            for i in range(0, 20 - len(current)):
+                current += " "
+            path = (str)(check_output(["readlink", files[i]]))
+            path = path.split("b'")
+            path = path[1]
+            path = path.split("'")
+            path = path[0]
+            path = path.splitlines()
+            path = path[0]
+            path = path.split("\\n")
+            path = path[0]
+            current += path
+            print(current, "\n")
 
 def main():
     os.chdir(os.path.expanduser('~'))
