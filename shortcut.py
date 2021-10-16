@@ -30,8 +30,8 @@ def create_link():
     print("Current path: ", os.getcwd(),"\n")
     source = input("Enter the source file: ")
     target = input("Enter the target file: ")
-    t_re = (str)(check_output(["find", target]))
-    if t_re == "b\'\'":
+    t_re = subprocess.call(["find", target])
+    if t_re == 1:
         s_re = (str)(check_output(["sudo", "find", "/home", "-name", source]))
         while (s_re == "b\'\'"):
             print("\nCan not find the source file, please try again")
@@ -50,9 +50,8 @@ def delete_link():
     os.chdir(os.path.expanduser('~'))
     print("Current path: ", os.getcwd(),"\n")
     target = input("Enter the shortcut: ")
-    t_re = (str)(check_output(["find", target]))
-    t_re_n = t_re[len(t_re) - 1]
-    if t_re_n[0] == '/':
+    t_re = subprocess.call(["find", target])
+    if t_re == 0:
         l_re = subprocess.call(["readlink", target])
         if l_re == 0:
             subprocess.call(["/bin/rm", target])
