@@ -20,7 +20,7 @@ def clear_terminal():
         _ = system('clear')
 
 def print_manu():
-    print("\n\n-----------------------------------------------------\n\n")
+    print("\n\n--------------------------------------------------------------\n\n")
     print("Enter Selection (1, 2, or 3):\n\n")
     print("\t1 - Create a shortcut in your home directory.\n")
     print("\t2 - Remove a shortcaut from your home directory.\n")
@@ -35,7 +35,7 @@ def create_link():
         s_re = (str)(check_output(["sudo", "find", "/home", "-name", source]))
         while (s_re == "b\'\'"):
             print("\nCan not find the source file, please try again")
-            target = input("Enter the source file: ")
+            source = input("Enter the source file: ")
             s_re = (str)(check_output(["sudo", "find", "/home", "-name", source]))
         s_path = os.path.abspath(source)
         os.chdir(os.path.expanduser('~'))
@@ -122,7 +122,7 @@ def main():
             run_report()
         else:
             print("Unrecognized input, please try again...\n")
-        print("\n\n\n\n\n")
+        print("\n\n\n\n")
         print_manu()
         print("Current path: ", os.getcwd(),"\n")
         clear_terminal()
