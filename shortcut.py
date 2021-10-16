@@ -101,7 +101,7 @@ def run_report():
     for i in range (0, 13):
         title += " "
     title += "Target Path"
-    print("\033[33", title, "\033[0m\n")
+    print("\033[33m", title, "\033[0m\n")
     for i in range(0, len(currents)):
         if (currents[i] != None):
             print(currents[i])
