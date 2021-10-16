@@ -81,7 +81,7 @@ def run_report():
         re = subprocess.call(["readlink", files[i]])
         if re == 0:
             current = files[i]
-            for i in range(0, 20 - len(current)):
+            for n in range(0, 20 - len(current)):
                 current += " "
             path = (str)(check_output(["readlink", files[i]]))
             path = path.split("b'")
